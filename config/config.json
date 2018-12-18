@@ -2,7 +2,7 @@
   "development": {
     "username": "teamuser",
     "password": "JSWizards2019",
-    "database": "exampledb",
+    "database": "eventfinder_db",
     "host": "localhost",
     "dialect": "mysql"
   },
