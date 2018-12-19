@@ -1,5 +1,3 @@
-
-
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
@@ -26,9 +24,8 @@ module.exports = function(app) {
     }).then(function() {
       res.redirect(307, "/api/login");
     }).catch(function(err) {
-      console.log(err);
-      res.json(err);
-      // res.status(422).json(err.errors[0].message);
+      console.log(err.errors[0].message);
+      res.json({message: err.errors[0].message});
     });
   });
 
@@ -53,5 +50,4 @@ module.exports = function(app) {
       });
     }
   });
-
 };
