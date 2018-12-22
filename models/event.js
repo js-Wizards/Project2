@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     city: DataTypes.TEXT,
     state: DataTypes.TEXT,
     postalCode: DataTypes.INTEGER,
-    startData: DataTypes.DATE,
+    startDate: DataTypes.DATE,
     createdBy: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
