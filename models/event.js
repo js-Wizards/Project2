@@ -2,7 +2,10 @@ module.exports = function(sequelize, DataTypes) {
   var Event = sequelize.define("Event", {
     eventName: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     venueName: DataTypes.TEXT,
     addressLine1: DataTypes.TEXT,
@@ -10,7 +13,8 @@ module.exports = function(sequelize, DataTypes) {
     city: DataTypes.TEXT,
     state: DataTypes.TEXT,
     postalCode: DataTypes.INTEGER,
-    startDate: DataTypes.DATE,
+    startDate: DataTypes.DATEONLY,
+    startTime: DataTypes.TIME,
     createdBy: {
       type: DataTypes.INTEGER,
       defaultValue: 0,

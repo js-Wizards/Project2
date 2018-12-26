@@ -1,14 +1,19 @@
-var axios = require("axios");
-var db = require("../models");
+const db = require("../models");
+const axios = require("axios");
+const moment = require("moment");
+
 
 module.exports = function (app) {
-  app.get("/api/loaddata/:category", function (request, response) {
+  app.get("/api/data/:category", function (request, response) {
+    const startDate = moment().format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS);
+    const endDate = moment(startDate).add(1, 'months').format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS);
+    //console.log(startDate);
     axios
       .get("https://app.ticketmaster.com/discovery/v2/events.json", {
         params: {
           apikey: "QpgAlmehADBTbnhbCGSGXmv5wqyRcSpo",
-          startDateTime: "2018-12-26T00:00:00Z",
-          endDateTime: "2018-12-28T23:59:00Z",
+          startDateTime: startDate + "Z",
+          endDateTime: endDate + "Z",
           city: "Chicago",
           countryCode: "US",
           stateCode: "IL",
@@ -36,6 +41,9 @@ module.exports = function (app) {
                 newEvent.city = responseData[i][key].venues[0].city.name
                 newEvent.state = responseData[i][key].venues[0].state.stateCode
                 newEvent.postalCode = responseData[i][key].venues[0].postalCode
+              } else if (key === "dates") {
+                newEvent.startDate = responseData[i][key].start.localDate
+                newEvent.startTime = responseData[i][key].start.localTime
               }
               newEvent.CategoryId = dbcategory.dataValues.id
             }
