@@ -51,7 +51,10 @@ module.exports = function (app) {
                 // })
 
                 //console.log(JSON.stringify(response.data, null, " "));
-                res.json(response.data._embedded.events.slice(0, 3));
+                // res.json(response.data._embedded.events.slice(0, 3));
+                // res.render("admin", db_data[0]);
+
+        
             })
             .catch(function (error) {
                 console.log(error);

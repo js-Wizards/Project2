@@ -25,7 +25,7 @@ module.exports = function(app) {
 
   app.get("/admin", function(req, res) {
     res.render("admin");
-    // res.render("admin", hbsObject);
+    // res.render("admin", db_data);
 
   });
 

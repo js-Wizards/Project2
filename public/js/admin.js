@@ -8,6 +8,6 @@ $(".load-button").on("click", function () {
         console.log("get event info");
         
         // Reload the page to get the updated list
-        // location.reload();
+        location.reload();
     });
 });
