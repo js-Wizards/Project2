@@ -8,7 +8,7 @@ module.exports = function (app) {
                 params: {
                     apikey: "QpgAlmehADBTbnhbCGSGXmv5wqyRcSpo",
                     startDateTime: "2018-12-22T00:00:00Z",
-                    endDateTime: "2018-12-22T23:59:00Z",
+                    endDateTime: "2019-12-22T23:59:00Z",
                     city: "Chicago",
                     countryCode: "US",
                     stateCode: "IL",
@@ -17,8 +17,10 @@ module.exports = function (app) {
                 }
             })
             .then(function (response) {
-                //console.log(req.params.category);
+                // console.log(req.params.category);
+                // console.log(response.data);
                 let responseData = response.data._embedded.events;
+                // console.log(responseData);
                 let db_data = [];
                 //loop through response and create new object that will be saved to db
                 for (var i = 0; i < responseData.length; i++) {
@@ -40,8 +42,10 @@ module.exports = function (app) {
                     };
                     //console.log(newEvent);
                     db_data.push(newEvent);
+                    
                 };
                 console.log(db_data);
+                // console.log(db_data[0]);
                 // db.Event.create(req.body).then(function (dbExample) {
                 //   res.json(dbExample);
                 // })
