@@ -11,10 +11,14 @@
     <div class="uk-width-1-2">
         <div class="uk-card uk-card-default uk-card-body">
             <p uk-margin>
-                <button class="load-button uk-button uk-button-default" data-id="movies">Movies</button>
+                {{!-- <button class="load-button uk-button uk-button-default" data-id="movies">Movies</button>
                 <button class="load-button uk-button uk-button-primary" data-id="sports">Sports</button>
                 <button class="load-button uk-button uk-button-secondary" data-id="music">Music</button>
-                <button class="load-button uk-button uk-button-danger" data-id="arts">Arts + Theater</button>
+                <button class="load-button uk-button uk-button-danger" data-id="arts">Arts + Theater</button> --}}
+                <a href="/admin/movies">Movies</a> |
+                <a href="/admin/sports">Sports</a> |
+                <a href="/admin/music">Music</a> |
+                <a href="/admin/arts">Arts & Theater</a>
             </p>
         </div>
     </div>
@@ -29,16 +33,28 @@
     <div class="uk-width-1-2">
         <div id="testdiv" class="uk-card uk-card-default uk-card-body">
 
-            <h1>{{eventName}}</h1>
+            <h1>{{category}}</h1>
 
-            {{!-- <ul>
-                {{#each events}}
-                <li>{{eventName}}</li>
+            <ul>
+                {{#each eventsDB}}
+                <li>{{eventName}} {{venueName}} {{addressLine1}} {{addressLine2}} {{city}} {{state}} {{postalCode}}
+                    {{startDate}} {{startTime}} </li>
                 {{/each}}
-            </ul> --}}
+            </ul>
         </div>
     </div>
     <div class="uk-width-1-2">
-        <div class="uk-card uk-card-default uk-card-body">Feed 2</div>
+        <div class="uk-card uk-card-default uk-card-body">
+            <ul>
+                {{#each eventsAPI}}
+                <li>{{eventName}} {{venueName}} {{addressLine1}} {{addressLine2}} {{city}} {{state}} {{postalCode}}
+                    {{startDate}} {{startTime}} </li>
+                {{/each}}
+            </ul>
+
+
+        </div>
     </div>
 </div>
+
+{{!-- eventsAPI: dbData --}}
