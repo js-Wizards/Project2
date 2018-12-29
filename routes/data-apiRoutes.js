@@ -34,6 +34,8 @@ module.exports = function (app) {
             for (let key in responseData[i]) {
               if (key === "name") {
                 newEvent.eventName = responseData[i][key]
+              } else if (key === "id") {
+                newEvent.uuid = responseData[i][key]
               } else if (key === "_embedded") {
                 newEvent.venueName = responseData[i][key].venues[0].name
                 newEvent.addressLine1 = responseData[i][key].venues[0].address.line1
@@ -51,7 +53,7 @@ module.exports = function (app) {
             db_data.push(newEvent);
           };
           //console.log(db_data);
-          db.Event.bulkCreate(db_data)
+          db.Event.bulkCreate(db_data, { ignoreDuplicates: true })
             .then(() => {
               return db.Event.findAll({});
             }).then(events => {
