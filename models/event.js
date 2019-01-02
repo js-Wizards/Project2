@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    eventid: DataTypes.INTEGER,
+    eventid: DataTypes.TEXT,
     venueName: DataTypes.TEXT,
     addressLine1: DataTypes.TEXT,
     addressLine2: DataTypes.TEXT,

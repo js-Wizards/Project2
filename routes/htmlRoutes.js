@@ -28,16 +28,29 @@ module.exports = function(app) {
   app.get("/admin/:category", function(req, res) {
     ticketmaster.getByCatetory(req.params.category)
     .then((dbData) => {
-      let idArray = [];
+      let eventIdArray = [];
       console.log("ticketmaster");
       //todo: save to database
-      // db.Event.findAll({
-      //   where: {
-      //     id: eventid
-      //   }
-      // }).then(function(results) {
-      //   console.log(results);
-      // })
+      db.Event.findAll()
+      .then(function(results) {
+        console.log(results.eventid);
+
+        for(i=0; i < results.length; i++) {
+          let = id = results[i].eventid;
+          eventIdArray.push(id);
+          // console.log(results[i].eventid);
+        }
+        // console.log(eventIdArray);
+        let dbDataFiltered = dbData.filter(event => {
+          return eventIdArray.indexOf(event.id) == -1;
+        })
+
+        db.Event.bulkCreate(dbDataFiltered)
+        .then((bulkData) => {
+          res.render("admin", {category: req.params.category, eventsDB: bulkData, eventsAPI: dbData})
+        })
+        // console.log(dbDataFiltered);
+      })
       // get event.id's from database and put them into an array called eventIds ["vv1A7ZAf4Gkdbtp", "vv1A7ZAf4Gkdbtp"]
       // filter dbData to just the ones that are NOT already in db
       // let dbDataFiltered = dbData.filter(event => {
@@ -50,10 +63,10 @@ module.exports = function(app) {
       // })
 
 
-      db.Event.bulkCreate(dbData)
-      .then((bulkData) => {
-        res.render("admin", {category: req.params.category, eventsDB: bulkData, eventsAPI: dbData})
-      })
+      // db.Event.bulkCreate(dbDataFiltered)
+      // .then((bulkData) => {
+      //   res.render("admin", {category: req.params.category, eventsDB: bulkData, eventsAPI: dbData})
+      // })
 
 
 
