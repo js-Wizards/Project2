@@ -72,4 +72,41 @@ module.exports = function (app) {
     });
   });
 
+  // POST route for saving a new user event
+  app.post("/api/events", function (request, response) {
+    console.log(request.body);
+    db.Event.create({
+      eventName: request.body.eventName,
+      venueName: request.body.venueName,
+      addressLine1: request.body.addressLine1,
+      addressLine2: request.body.addressLine2,
+      city: request.body.city,
+      state: request.body.state,
+      postalCode: request.body.postalCode,
+      startDate: request.body.startDate,
+      startTime: request.body.startTime,
+      createdBy: request.body.createdBy,
+      isUserCreated: 1
+    })
+      .then(function (dbUserEvent) {
+        console.log(dbUserEvent)
+        db.Event.findOne({
+          where: {
+            eventId: dbUserEvent.eventId
+          }
+        })
+          .then(function (newEvent) {
+            console.log(newEvent);
+            console.log("This is after the find")
+            db.SavedEvents.create({
+              EventUuid: newEvent.uuid,
+              UserId: request.body.createdBy
+            })
+            .then(function(dbSavedEvent){
+              console.log(dbSavedEvent);
+            })
+          })
+        //response.json(dbUserEvent);
+      })
+  });
 }

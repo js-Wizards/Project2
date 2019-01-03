@@ -10,4 +10,5 @@ INSERT INTO  categories (name)
 VALUES ("music"),
     ("movie"),
     ("sports"),
-    ("arts & theatre");
+    ("arts & theatre"),
+    ("event");

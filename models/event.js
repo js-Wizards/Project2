@@ -1,10 +1,14 @@
-const uuid = require('uuidv4');
-
 module.exports = function(sequelize, DataTypes) {
   var Event = sequelize.define("Event", {
     uuid: {
       primaryKey: true,
-      type: DataTypes.UUID 
+      type: DataTypes.UUID
+    },
+    eventId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+      autoIncrement: true
     },
     eventName: {
       type: DataTypes.TEXT,
