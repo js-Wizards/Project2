@@ -2,8 +2,9 @@ const axios = require("axios");
 const moment = require("moment");
 const db = require("../models");
 
+
 const ticketmaster = {
-    getByCatetory: function (category) {
+    getByCategory: function (category) {
         const startDate = moment().format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS);
         const endDate = moment(startDate).add(1, 'months').format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS);
         return axios.get("https://app.ticketmaster.com/discovery/v2/events.json", {
@@ -19,11 +20,13 @@ const ticketmaster = {
             }
         })
             .then(tmData => {
-                let responseData = tmData.data._embedded.events;
-                db.Category.findOne({
+                let db_data = db.Category.findOne({
                     where: { name: category }
                 })
-                    .then(function (dbcategory) {
+                    .then(dbCategory => {
+                        //console.log("dbCategory", dbCategory);
+                        let responseData = tmData.data._embedded.events;
+                        //console.log(dbcategory);
                         // let responseData = response.data._embedded.events;
                         let dbData = responseData.map(event => {
                             return {
@@ -39,13 +42,12 @@ const ticketmaster = {
                                 // url: event.url,
                                 startDate: event.dates.start.localDate,
                                 startTime: event.dates.start.localTime,
-                                CategoryId: dbcategory.dataValues.id
+                                CategoryId: dbCategory.dataValues.id
                             }
                         });
-                        // console.log(responseData);
-                        //console.log(dbData);
                         return dbData; // use responseData to return ticketmaster formatted data
                     })
+                return db_data;
             })
             .catch(function (error) {
                 console.log(error);

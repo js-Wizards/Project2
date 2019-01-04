@@ -54,12 +54,12 @@ module.exports = function (app) {
           };
           //console.log(db_data);
           db.Event.bulkCreate(db_data, { ignoreDuplicates: true })
-            .then(() => {
-              return db.Event.findAll({});
-            }).then(events => {
-              //console.log(events[0].dataValues)
-              response.json(events);
-            })
+          .then(() => {
+            return db.Event.findAll({});
+          })
+          .then((bulkData) => {
+            response.render("admin", { category: request.params.category, eventsDB: bulkData, eventsAPI: db_data })
+          })
         })
       })
       .catch(function (error) {

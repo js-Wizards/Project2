@@ -9,11 +9,14 @@ module.exports = function (app) {
     db.Event.destroy({
       where: {
         uuid: {
-          [Op.gt]: 'A'
+          [Op.or]: {
+            [Op.gt]: 'A',
+            [Op.lt]: 'A'
+          }
         },
-        isUserCreated: {
-          [Op.eq]: 0
-        },
+        // isUserCreated: {
+        //   [Op.eq]: 0
+        // },
         startDate: {
           [Op.lt]: date
         }

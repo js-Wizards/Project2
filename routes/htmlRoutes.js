@@ -4,39 +4,30 @@ var ticketmaster = require("../modules/ticketmaster")
 
 module.exports = function (app) {
   // Load index page
-  app.get("/", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
-  });
+  // app.get("/", function (req, res) {
+  //   db.Example.findAll({}).then(function (dbExamples) {
+  //     res.render("index", {
+  //       msg: "Welcome!",
+  //       examples: dbExamples
+  //     });
+  //   });
+  // });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function (req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function (
-      dbExample
-    ) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
-  });
+  // // Load example page and pass in an example by id
+  // app.get("/example/:id", function (req, res) {
+  //   db.Example.findOne({ where: { id: req.params.id } }).then(function (
+  //     dbExample
+  //   ) {
+  //     res.render("example", {
+  //       example: dbExample
+  //     });
+  //   });
+  // });
 
 
   app.get("/admin/:category", function (req, res) {
-    ticketmaster.getByCatetory(req.params.category)
+    ticketmaster.getByCategory(req.params.category)
       .then(dbData => {
-        console.log("I'm back from the db.")
-        //console.log(dbData);
-        // let eventIdArray = [];
-        // console.log("ticketmaster");
-        // //todo: save to database
-        // db.Event.findAll()
-        // .then(function(results) {
-        //   console.log(results.eventid);
-
         //   for(i=0; i < results.length; i++) {
         //     let = id = results[i].eventid;
         //     eventIdArray.push(id);
@@ -54,7 +45,6 @@ module.exports = function (app) {
           .then((bulkData) => {
             res.render("admin", { category: req.params.category, eventsDB: bulkData, eventsAPI: dbData })
           })
-        // console.log(dbDataFiltered);
       })
     // get event.id's from database and put them into an array called eventIds ["vv1A7ZAf4Gkdbtp", "vv1A7ZAf4Gkdbtp"]
     // filter dbData to just the ones that are NOT already in db
