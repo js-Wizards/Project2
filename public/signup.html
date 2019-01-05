@@ -5,12 +5,15 @@
   <title>Passport Authentication</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-  <link href="stylesheets/style.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"> -->
+  <!-- <link href="stylesheets/style.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/styles/uikit.min.css">
+
+  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
+  <!-- <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
       </div>
@@ -39,10 +42,90 @@
         <p>Or log in <a href="/login">here</a></p>
       </div>
     </div>
+  </div> -->
+
+
+  <nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+
+      <ul class="uk-navbar-nav">
+        <li>
+          <a href="#"></a>
+          <div class="uk-navbar-dropdown">
+            <ul class="uk-nav uk-navbar-dropdown-nav">
+              <li class="uk-active"><a href="#">Active</a></li>
+              <li><a href="#">Item</a></li>
+              <li class="uk-nav-header">Header</li>
+              <li><a href="#">Item</a></li>
+              <li><a href="#">Item</a></li>
+              <li class="uk-nav-divider"></li>
+              <li><a href="#">Item</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <br><br><br>
+
+  <div class="uk-text-center" uk-grid>
+    <div class="uk-width-1-1">
+      <!-- <div class="uk-card uk-card-default uk-card-body"> -->
+      <h3 class="uk-heading-secondary">Sign Up Below</h3>
+      <!-- </div> -->
+    </div>
+    ​
   </div>
 
+
+  <div class="uk-text-center" uk-grid>
+    <div class="uk-width-1-1">
+      <form class="signup">
+
+        <div class="uk-margin form-group">
+          <!-- <h3 class="uk-heading-bullet">Email Address</h3> -->
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: mail"></span>
+            <!-- <label for="exampleInputEmail1">Email address</label> -->
+            <input class="uk-input form-control" id="email-input" type="email">
+          </div>
+        </div>
+
+
+        <div class="uk-margin form-group">
+          <!-- <h3 class="uk-heading-bullet">Email Address</h3> -->
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+            <!-- <label for="exampleInputPassword1">Password</label> -->
+            <input class="uk-input form-control" id="password-input" type="password">
+
+          </div>
+        </div>
+
+
+        <div class="uk-margin" uk-margin>
+          <button type="submit" class="uk-button uk-button-default">Submit</button>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="/js/uikit.min.js"></script>
+  <script src="/js/uikit-icons.min.js"></script>
   <script type="text/javascript" src="js/signup.js"></script>
+
 
 </body>
 
