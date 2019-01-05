@@ -46,7 +46,7 @@ module.exports = function(app) {
         })
 
         db.Event.bulkCreate(dbDataFiltered)
-        .then((bulkData) => {
+        .then(bulkData => {
           res.render("admin", {category: req.params.category, eventsDB: bulkData, eventsAPI: dbData})
         })
         // console.log(dbDataFiltered);

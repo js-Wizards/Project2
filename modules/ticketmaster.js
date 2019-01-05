@@ -24,15 +24,15 @@ const ticketmaster = {
                         eventName: event.name,
                         eventid: event.id,
                         venueName: event._embedded.venues[0].name,
-                        addressLine1 : event._embedded.venues[0].address.line1,
-                        addressLine2 : event._embedded.venues[0].address.line2,
+                        addressLine1: event._embedded.venues[0].address.line1,
+                        addressLine2: event._embedded.venues[0].address.line2,
                         city: event._embedded.venues[0].city.name,
                         state: event._embedded.venues[0].state.stateCode,
                         postalCode: event._embedded.venues[0].postalCode,
                         // id: event.id,
                         // url: event.url,
                         startDate: event.dates.start.localDate,
-                        startTime: event.dates.start.localTime,                     
+                        startTime: event.dates.start.localTime,
                     }
                 });
                 // console.log(responseData);
