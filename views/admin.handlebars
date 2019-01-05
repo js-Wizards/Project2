@@ -1,0 +1,68 @@
+<div class="uk-text-center" uk-grid>
+    <div class="uk-width-1-1">
+        <div class="uk-card uk-card-default uk-card-body">
+            <h1 class="uk-heading-primary">Admin</h1>
+        </div>
+    </div>
+​
+</div>
+​
+<div class="uk-text-center" uk-grid>
+    <div class="uk-width-1-1">
+        <div class="uk-card uk-card-default uk-card-body">
+            {{!-- <p uk-margin>
+                <button class="load-button uk-button uk-button-default" data-id="movies">Movies</button>
+                <button class="load-button uk-button uk-button-primary" data-id="sports">Sports</button>
+                <button class="load-button uk-button uk-button-secondary" data-id="music">Music</button>
+                <button class="load-button uk-button uk-button-danger" data-id="arts">Arts + Theater</button>
+                <a href="/admin/movies">Movies</a> |
+                <a href="/admin/sports">Sports</a> |
+                <a href="/admin/music">Music</a> |
+                <a href="/admin/arts">Arts and Theater</a>
+            </p> --}}
+​
+            <p uk-margin>
+                <a class="uk-button uk-button-primary" href="/admin/movies">Movies</a>
+                <a class="uk-button uk-button-secondary" href="/admin/sports">Sports</a>
+                <a class="uk-button uk-button-danger" href="/admin/music">Music</a>
+                <a class="uk-button uk-button-default" href="/admin/Arts%20&%20Theatre">Arts + Theater</a>
+            </p>
+        </div>
+    </div>
+    {{!-- <div class="uk-width-1-2">
+        <div class="uk-card uk-card-default uk-card-body">1-2
+​
+        </div>
+    </div> --}}
+</div>
+​
+<div class="uk-text-center" uk-grid>
+    <div class="uk-width-1-2">
+        <div id="testdiv" class="uk-card uk-card-default uk-card-body">
+​
+            <h1>Category: "{{category}}" </h1>
+​
+            <ul>
+                {{#each eventsDB}}
+                <li>{{eventName}} {{venueName}} {{addressLine1}} {{addressLine2}} {{city}} {{state}} {{postalCode}}
+                    {{startDate}} {{startTime}} </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="uk-width-1-2">
+        <div class="uk-card uk-card-default uk-card-body">
+            <ul>
+                {{#each eventsAPI}}
+                <li>{{eventName}} {{venueName}} {{addressLine1}} {{addressLine2}} {{city}} {{state}} {{postalCode}}
+                    {{startDate}} {{startTime}} </li>
+                {{/each}}
+            </ul>
+​
+​
+        </div>
+    </div>
+</div>
+​
+{{!-- eventsAPI: dbData --}}
+ wrap long lines
