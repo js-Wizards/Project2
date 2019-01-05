@@ -61,7 +61,7 @@ module.exports = function (app) {
   });
 
   //GET route for getting all of the public events
-  app.get("/api/events/", function (request, response) {
+  app.get("/api/events", function (request, response) {
     db.Event.findAll({
       where: {
         isUserCreated: 0
@@ -89,27 +89,52 @@ module.exports = function (app) {
       startDate: request.body.startDate,
       startTime: request.body.startTime,
       createdBy: request.body.createdBy,
-      isUserCreated: 1
+      isUserCreated: 1,
+      CategoryId: 5
     })
       .then(function (dbUserEvent) {
-        console.log(dbUserEvent)
+        //console.log(dbUserEvent)
         db.Event.findOne({
           where: {
             eventId: dbUserEvent.eventId
           }
         })
           .then(function (newEvent) {
-            console.log(newEvent);
-            console.log("This is after the find")
-            db.SavedEvents.create({
+            //console.log(newEvent);
+            //console.log("This is after the find")
+            db.SavedEvent.create({
               EventUuid: newEvent.uuid,
               UserId: request.body.createdBy
             })
             .then(function(dbSavedEvent){
               console.log(dbSavedEvent);
+              response.json(dbSavedEvent);
             })
           })
-        //response.json(dbUserEvent);
       })
   });
+
+  app.get("/api/events/user/:id", function(request, response) {
+    // var query = {};
+    // if (req.query.author_id) {
+    //   query.AuthorId = req.query.author_id;
+    // }
+    // Here we add an "include" property to our options in our findAll query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Author
+    db.User.findAll({
+      where: {
+        id: request.params.id
+      },
+      include: [{
+        model: db.Event,
+        attributes: ["eventName","venueName","addressLine1","addressLine2","city","state","postalCode","startDate","startTime"]
+      }]
+    }).then(function(dbEvent) {
+      response.json(dbEvent[0].Events);
+    });
+  });
+
+
+
 }

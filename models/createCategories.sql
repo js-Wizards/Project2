@@ -11,4 +11,4 @@ VALUES ("music"),
     ("movie"),
     ("sports"),
     ("arts & theatre"),
-    ("event");
+    ("user event");
