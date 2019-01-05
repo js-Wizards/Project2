@@ -39,7 +39,7 @@ module.exports = function (app) {
   });
 
   //GET route for getting all of the public events by category
-  app.get("/api/events/:category", function (request, response) {
+  app.get("/api/events/category/:category", function (request, response) {
     db.Category.findAll({
       where: {
         name: request.params.category

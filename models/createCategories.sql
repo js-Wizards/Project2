@@ -1,6 +1,3 @@
-DROP DATABASE IF EXISTS eventsfinder_db;
-CREATE DATABASE eventfinder_db;
-
 USE eventfinder_db;
 
 ALTER TABLE `eventfinder_db`.`categories` 
