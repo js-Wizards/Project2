@@ -1,16 +1,22 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
+<nav class="uk-navbar-container" uk-navbar>
+    <span class="uk-form-icon" uk-icon="icon: heart"></span>
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+            <li>
+                <a href="#"></a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-active"><a href="#"><p>Welcome <span class="member-name"></span></p></a></li>
+                        <li><a href="#">Item</a></li>
+                        {{!-- <li class="uk-nav-header">Header</li> --}}
+                        {{!-- <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li> --}}
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+
     </div>
-  </div>
 </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span></h2>
-      </div>
-    </div>
-  </div>
