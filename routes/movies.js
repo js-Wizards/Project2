@@ -9,6 +9,12 @@ request('https://api.themoviedb.org/3/movie/now_playing?page={0}&api_key=b581c4d
     // Print the error if one occurred
  if(!error && response.statusCode == 200){
     var results = JSON.parse(body);
+//     if (parsedData.length > 0) {
+//       for (let i = 0; i ,parsedData.length; i++){
+//          console.log ('Title of Movie: ${parsedData[i].movie.title}\nVote Average: ${parsedData[i].movie.vote_average}\nPoster: ${parsedData[i].movie.poster_path'
+//          )}
+//    }
+// }
         res.send(results["results"][0]["title"]); 
      }
   
