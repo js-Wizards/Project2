@@ -5,6 +5,7 @@ var ticketmaster = require("../modules/ticketmaster")
 module.exports = function (app) {
   // Load index page
   app.get("/events", function (request, response) {
+    // console.log("this is the request /events", request.user);
     db.Event.findAll({
       where: {
         isUserCreated: 0
@@ -14,10 +15,21 @@ module.exports = function (app) {
         ["startTime", "ASC"]
       ]
     }).then(function (dbEvent) {
-      
-      response.render("events", { eventsDB: dbEvent })
+      db.User.findAll({
+        where: {
+          id: request.user.id
+        },
+        include: [{
+          model: db.Event,
+          attributes: ["eventName", "venueName", "addressLine1", "addressLine2", "city", "state", "postalCode", "startDate", "startTime"]
+        }]
+      }).then(function (mySavedEvents) {
+      console.log("mysaved events", mySavedEvents);
+      console.log("db events", dbEvent)
+      response.render("events", { eventsDB: dbEvent, myEvents: mySavedEvents[0].Events })
     });
   });
+});
 
   // // Load example page and pass in an example by id
   // app.get("/example/:id", function (req, res) {
