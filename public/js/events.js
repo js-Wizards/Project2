@@ -8,17 +8,19 @@ $(document).ready(function() {
 });
 
 
-$("#add_to_my_events").on("click", function () {
+$(".add_to_my_events").on("click", function () {
   const userID = $(".member-name").attr("data-userid");
-  const eventID = $("#event-card").attr("data-eventID");
-  console.log("clicked add to my events button");
+  const eventID = $(this).attr("data-eventID");
+  // console.log("this is this", this);
+  // console.log("clicked add to my events button");
   console.log(userID);
+  console.log(eventID);
   $.post("/api/events", {
       UserId: userID,
       eventId: eventID
   }).then(function (myData) {
-      console.log("posting");
-      console.log(myData);
+      // console.log("posting");
+      // console.log(myData);
       // Reload the page to get the updated list
       location.reload();
   });
