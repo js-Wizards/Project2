@@ -4,14 +4,19 @@ var ticketmaster = require("../modules/ticketmaster")
 
 module.exports = function (app) {
   // Load index page
-  app.get("/events", function (req, res) {
-    // db.Example.findAll({}).then(function (dbExamples) {
-      // res.render("index", {
-      //   msg: "Welcome!",
-      //   examples: dbExamples
-      // });
-      res.render("events");
-    // });
+  app.get("/events", function (request, response) {
+    db.Event.findAll({
+      where: {
+        isUserCreated: 0
+      },
+      order: [
+        ["startDate", "ASC"],
+        ["startTime", "ASC"]
+      ]
+    }).then(function (dbEvent) {
+      
+      response.render("events", { eventsDB: dbEvent })
+    });
   });
 
   // // Load example page and pass in an example by id
