@@ -1,3 +1,14 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+.uk-container-large {
+  background-image: url("/image/chi.jpg");
+  background-repeat: no-repeat;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
