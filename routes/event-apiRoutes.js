@@ -7,21 +7,21 @@ module.exports = function (app) {
   app.delete("/api/events", function (request, response) {
     let date = moment().format("YYYY-MM-DD");
     db.Event.destroy({
-      where: {
-        uuid: {
-          [Op.or]: {
-            [Op.gt]: 'A',
-            [Op.lt]: 'A'
+        where: {
+          uuid: {
+            [Op.or]: {
+              [Op.gt]: 'A',
+              [Op.lt]: 'A'
+            }
+          },
+          // isUserCreated: {
+          //   [Op.eq]: 0
+          // },
+          startDate: {
+            [Op.lt]: date
           }
-        },
-        // isUserCreated: {
-        //   [Op.eq]: 0
-        // },
-        startDate: {
-          [Op.lt]: date
         }
-      }
-    })
+      })
       .then(deletedData => {
         response.json(deletedData);
       });
@@ -29,17 +29,17 @@ module.exports = function (app) {
 
   app.delete("/api/events/:id", function (request, response) {
     db.Event.destroy({
-      where: {
-        id: request.params.id
-      }
-    })
+        where: {
+          id: request.params.id
+        }
+      })
       .then(function (deletedData) {
         response.json(deletedData);
       });
   });
 
   //GET route for getting all of the public events by category
-  app.get("/api/events/:category", function (request, response) {
+  app.get("/api/events/category/:category", function (request, response) {
     db.Category.findAll({
       where: {
         name: request.params.category
@@ -77,44 +77,28 @@ module.exports = function (app) {
 
   // POST route for saving a new user event
   app.post("/api/events", function (request, response) {
-    console.log(request.body);
-    db.Event.create({
-      eventName: request.body.eventName,
-      venueName: request.body.venueName,
-      addressLine1: request.body.addressLine1,
-      addressLine2: request.body.addressLine2,
-      city: request.body.city,
-      state: request.body.state,
-      postalCode: request.body.postalCode,
-      startDate: request.body.startDate,
-      startTime: request.body.startTime,
-      createdBy: request.body.createdBy,
-      isUserCreated: 1,
-      CategoryId: 5
-    })
-      .then(function (dbUserEvent) {
-        //console.log(dbUserEvent)
-        db.Event.findOne({
-          where: {
-            eventId: dbUserEvent.eventId
-          }
-        })
-          .then(function (newEvent) {
-            //console.log(newEvent);
-            //console.log("This is after the find")
-            db.SavedEvent.create({
-              EventUuid: newEvent.uuid,
-              UserId: request.body.createdBy
-            })
-            .then(function(dbSavedEvent){
-              console.log(dbSavedEvent);
-              response.json(dbSavedEvent);
-            })
+    console.log("this is the request body", request.body);
+    db.Event.findOne({
+        where: {
+          eventId: request.body.eventId
+        }
+      })
+      .then(function (dbEvent) {
+        console.log(dbEvent);
+        //console.log(newEvent);
+        //console.log("This is after the find")
+        db.SavedEvent.create({
+            EventUuid: dbEvent.uuid,
+            UserId: request.body.UserId
+          })
+          .then(function (dbSavedEvent) {
+            console.log(dbSavedEvent);
+            response.json(dbSavedEvent);
           })
       })
   });
 
-  app.get("/api/events/user/:id", function(request, response) {
+  app.get("/api/events/user/:id", function (request, response) {
     // var query = {};
     // if (req.query.author_id) {
     //   query.AuthorId = req.query.author_id;
@@ -128,9 +112,9 @@ module.exports = function (app) {
       },
       include: [{
         model: db.Event,
-        attributes: ["eventName","venueName","addressLine1","addressLine2","city","state","postalCode","startDate","startTime"]
+        attributes: ["eventName", "venueName", "addressLine1", "addressLine2", "city", "state", "postalCode", "startDate", "startTime"]
       }]
-    }).then(function(dbEvent) {
+    }).then(function (dbEvent) {
       response.json(dbEvent[0].Events);
     });
   });
