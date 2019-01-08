@@ -1,5 +1,5 @@
 <nav class="uk-navbar-container" uk-navbar>
-    <span class="uk-form-icon" uk-icon="icon: heart"></span>
+    <span class="uk-form-icon" uk-icon="icon: menu"></span>
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
             <li>
@@ -9,10 +9,6 @@
                         <li class="uk-active"><a href="#">
                                 <p>Welcome <span class="member-name"></span></p>
                             </a></li>
-                        <li><a href="#">Item</a></li>
-                        {{!-- <li class="uk-nav-header">Header</li> --}}
-                        {{!-- <li><a href="#">Item</a></li>
-                        <li><a href="#">Item</a></li> --}}
                         <li class="uk-nav-divider"></li>
                         <li><a href="/logout">Logout</a></li>
                     </ul>
@@ -77,8 +73,7 @@
                             {{postalCode}}</p>
                     </div>
                     <div class="uk-card-footer">
-                        <a data-eventID="{{eventId}}" class="uk-button uk-button-text add_to_my_events">Add To My
-                            events</a>
+                        <a data-eventID="{{eventId}}" class="uk-button uk-button-text add_to_my_events"></a>
                         {{!-- eventsDB: dbEvent, myEvents: mySavedEvents }) --}}
                     </div>
                 </div>
