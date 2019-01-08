@@ -26,7 +26,15 @@
         <div id="public-events" class="uk-width-2-3">
             <div class="uk-card uk-card-body">
                 <h3 class="uk-card-title uk-text-center">Events In Your Area</h3>
-                <div class=></div>
+                <div class=>
+                    <ul>
+                        {{#each eventsDB}}
+                        <li>{{eventName}} {{venueName}} {{addressLine1}} {{addressLine2}} {{city}} {{state}}
+                            {{postalCode}}
+                            {{startDate}} {{startTime}} </li>
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
         </div>
         <div id="my-events" class="uk-width-1-3">
