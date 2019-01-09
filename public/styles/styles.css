@@ -2,10 +2,16 @@
   line-height: 2.5;
 }
 
-.uk-container-large {
-  background-image: url("/image/chi.jpg");
+.user-pages {
+  background-image: url("/images/chi-night.jpg");
+  object-fit: cover;
   background-repeat: no-repeat;
 }
+
+/* .main-content {
+  background-image: url("/images/chi-river.jpeg");
+  background-repeat: no-repeat;
+} */
 
 .event-card {
   display: flex;

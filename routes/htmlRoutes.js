@@ -21,11 +21,15 @@ module.exports = function (app) {
         },
         include: [{
           model: db.Event,
-          attributes: ["eventName", "venueName", "addressLine1", "addressLine2", "city", "state", "postalCode", "startDate", "startTime"]
-        }]
+          attributes: ["eventId","eventName", "venueName", "addressLine1", "addressLine2", "city", "state", "postalCode", "startDate", "startTime"]
+        }],
+        order: [
+          [db.Event, "startDate", "ASC"],
+          [db.Event, "startTime", "ASC"]
+        ]
       }).then(function (mySavedEvents) {
-      console.log("mysaved events", mySavedEvents);
-      console.log("db events", dbEvent)
+      //console.log("mysaved events", mySavedEvents);
+      //console.log("db events", dbEvent)
       response.render("events", { eventsDB: dbEvent, myEvents: mySavedEvents[0].Events })
     });
   });
