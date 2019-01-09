@@ -4,17 +4,31 @@
 
 .user-pages {
   background-image: url("/images/chi-night.jpg");
-  object-fit: cover;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
 /* .main-content {
   background-image: url("/images/chi-river.jpeg");
   background-repeat: no-repeat;
+  background-size: cover;
 } */
 
 .event-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+#public-events {
+  padding-left: 100px;
+}
+
+.uk-panel-scrollable {
+  border: 0;
+  opacity: .8;
+}
+
+.div-title {
+  color: lightgrey;
 }
