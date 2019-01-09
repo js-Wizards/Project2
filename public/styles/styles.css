@@ -4,13 +4,13 @@
 
 .user-pages {
   background-image: url("/images/chi-night.jpg");
-  background-size: cover;
+  object-fit: cover;
   background-repeat: no-repeat;
-  /* background-position: bottom; */
 }
 
-/* .login {
-  
+/* .main-content {
+  background-image: url("/images/chi-river.jpeg");
+  background-repeat: no-repeat;
 } */
 
 .event-card {
