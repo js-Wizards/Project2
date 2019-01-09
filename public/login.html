@@ -63,59 +63,60 @@
 
     </div>
   </nav> -->
-
-  <br/><br/><br/>
-
-  <div class="uk-text-center" uk-grid>
-    <div class="uk-width-1-1">
-      <!-- <div class="uk-card uk-card-default uk-card-body"> -->
-      <h3 class="uk-heading-secondary">Login Here</h3>
-      <!-- </div> -->
+  <nav class="uk-navbar-container uk-margin uk-navbar-transparent" uk-navbar>
+    <div class="uk-navbar-left">
+      <a class="uk-navbar-item uk-logo">
+        EventFinder
+      </a>
     </div>
-    ​
+  </nav>
+  <br><br>
+  <div class="user-pages">
+    <br><br><br><br>
+    <div class="uk-text-center" uk-grid>
+      <div class="uk-width-1-1">
+        <!-- <div class="uk-card uk-card-default uk-card-body"> -->
+        <h3 class="uk-heading-secondary">Login Here</h3>
+        <!-- </div> -->
+      </div>
+      ​
+    </div>
+
+    <div class="uk-text-center" uk-grid>
+      <div class="uk-width-1-1">
+        <form class="login">
+
+          <div class="uk-margin form-group">
+            <!-- <h3 class="uk-heading-bullet">Email Address</h3> -->
+            <div class="uk-inline">
+              <span class="uk-form-icon" uk-icon="icon: mail"></span>
+              <!-- <label for="exampleInputEmail1">Email address</label> -->
+              <input class="uk-input form-control" id="email-input" type="email">
+            </div>
+          </div>
+
+          <div class="uk-margin form-group">
+            <!-- <h3 class="uk-heading-bullet">Email Address</h3> -->
+            <div class="uk-inline">
+              <span class="uk-form-icon" uk-icon="icon: lock"></span>
+              <!-- <label for="exampleInputPassword1">Password</label> -->
+              <input class="uk-input form-control" id="password-input" type="password">
+
+            </div>
+          </div>
+
+          <div class="uk-margin" uk-margin>
+            <button type="submit" class="uk-button uk-button-primary login-btn">Login</button>
+          </div>
+
+        </form>
+
+        <p class="uk-text-primary"> Or sign up <a class="uk-text-primary" href="/">here</a></p>
+      </div>
+    </div>
+    <br><br><br>
   </div>
 
-
-  <div class="uk-text-center" uk-grid>
-    <div class="uk-width-1-1">
-      <form class="login">
-
-        <div class="uk-margin form-group">
-          <!-- <h3 class="uk-heading-bullet">Email Address</h3> -->
-          <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: mail"></span>
-            <!-- <label for="exampleInputEmail1">Email address</label> -->
-            <input class="uk-input form-control" id="email-input" type="email">
-          </div>
-        </div>
-        
-
-
-
-
-        <div class="uk-margin form-group">
-          <!-- <h3 class="uk-heading-bullet">Email Address</h3> -->
-          <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: lock"></span>
-            <!-- <label for="exampleInputPassword1">Password</label> -->
-            <input class="uk-input form-control" id="password-input" type="password">
-
-          </div>
-        </div>
-
-
-
-
-        <div class="uk-margin" uk-margin>
-          <button type="submit" class="uk-button uk-button-default btn btn-default">Login</button>
-        </div>
-
-      </form>
-
-      <p>Or sign up <a href="/">here</a></p>
-    </div>
-  </div>
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="/js/uikit.min.js"></script>
   <script src="/js/uikit-icons.min.js"></script>
