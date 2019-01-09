@@ -19,3 +19,16 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+#public-events {
+  padding-left: 100px;
+}
+
+.uk-panel-scrollable {
+  border: 0;
+  opacity: .8;
+}
+
+.div-title {
+  color: lightgrey;
+}
