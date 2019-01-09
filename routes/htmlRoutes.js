@@ -1,6 +1,6 @@
 var db = require("../models");
-//var axios = require("axios");
 var ticketmaster = require("../modules/ticketmaster")
+const moment = require("moment");
 
 module.exports = function (app) {
   // Load index page
@@ -28,9 +28,37 @@ module.exports = function (app) {
           [db.Event, "startTime", "ASC"]
         ]
       }).then(function (mySavedEvents) {
-      //console.log("mysaved events", mySavedEvents);
-      //console.log("db events", dbEvent)
-      response.render("events", { eventsDB: dbEvent, myEvents: mySavedEvents[0].Events })
+      //console.log("mysaved events", mySavedEvents[0].Events);
+      let myEventData = mySavedEvents[0].Events.map(event => {
+        return {
+          eventId: event.eventId,
+          eventName: event.eventName,
+          venueName: event.venueName,
+          addressLine1: event.addressLine1,
+          addressLine2: event.addressLine2,
+          city: event.city,
+          state: event.state,
+          postalCode: event.postalCode,
+          startDate: moment(event.startDate).format("MMM DD, YYYY"),
+          startTime: moment(event.startDate+"T"+event.startTime).format("LT"),
+        }
+      });
+      let dbEventData = dbEvent.map(event => {
+        return {
+          eventId: event.eventId,
+          eventName: event.eventName,
+          venueName: event.venueName,
+          addressLine1: event.addressLine1,
+          addressLine2: event.addressLine2,
+          city: event.city,
+          state: event.state,
+          postalCode: event.postalCode,
+          startDate: moment(event.startDate).format("MMM DD, YYYY"),
+          startTime: moment(event.startDate+"T"+event.startTime).format("LT"),
+        }
+      })
+      //console.log("myEventData", myEventData);
+      response.render("events", { eventsDB: dbEventData, myEvents: myEventData })
     });
   });
 });
