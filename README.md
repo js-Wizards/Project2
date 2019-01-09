@@ -36,4 +36,15 @@ Passport is authentication middleware for Node.js.
   
 ## Handlebars
 Handlebars provides the power necessary to let you build semantic templates effectively with no frustration.
-- Handlebars provides the power necessary to let you build semantic templates effectively with no frustration.
+- https://handlebarsjs.com/
+
+
+### THEME CREDITS:
+- Node, https://nodejs.org/en/
+- Express, https://expressjs.com/
+- Sequelize, http://docs.sequelizejs.com/
+- Uikit, https://getuikit.com/
+- Heroku, https://www.heroku.com/
+- Ticketmaster API,  https://developer.ticketmaster.com/
+- Passport Authentication, www.passportjs.org/
+- Handlebars, https://handlebarsjs.com/
