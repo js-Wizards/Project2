@@ -8,16 +8,19 @@
   background-repeat: no-repeat;
 }
 
-/* .main-content {
-  background-image: url("/images/chi-river.jpeg");
+.main-content {
+  background-image: url("/images/chihenge.jpg");
   background-repeat: no-repeat;
+  background-size: contain;
   background-size: cover;
-} */
+}
 
 .event-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  opacity: .8;
+  color: #868585;
 }
 
 #public-events {
